@@ -23,10 +23,38 @@
 
 \usetikzlibrary{calc,shapes.multipart,chains,arrows}
 
+\newcommand{\Prb}[1]{P(\text{#1})}
+\newcommand{\CPr}[2]{P(\text{#1}|\text{#2})}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
 \title{Pattern Recognition}
 \author{Tim Luchterhand, Paul Nykiel, Jonas Strauch (Group P)}
 
 \begin{document}
     \maketitle
     \section{Discrete Naive Bayer Classifier}
+    \begin{enumerate}
+        \item
+        \item
+        $\Prb{Banana} \approx \frac{600}{1900} = 31,58\%$
+        \item
+        $\Prb{Long} \approx \frac{550}{1900} = 28,95\%$
+        \item
+        $\CPr{Banana}{Long} = \frac{500}{500 + 50} = 90,91\%$
+        \item
+        $\CPr{Long}{Banana} = \frac{\CPr{Banana}{Long} \cdot \Prb{Long}}{\Prb{Banana}} = 83,33\%$
+        \item
+        \begin{align*}
+            &\argmax_\omega{\left( P\left(\omega | (\text{Medium, Sweet, Green})^\text{T}\right) \right)} = \\
+            &\argmax_\omega{\left( P(\text{Medium} | \omega) \cdot P(\text{Sweet} | \omega) \cdot P(\text{Green} | \omega) \cdot P(\omega) \right)} \\
+        \end{align*}
+        For $\omega = \text{Banana}$: $P(\omega | x) \cdot p(x) = 0$
+
+        For $\omega = \text{Papaya}$: $P(\omega | x) \cdot p(x) = 0,0042$
+
+        For $\omega = \text{Apple}$: $P(\omega | x) \cdot p(x) = 0,0453$
+
+        $\Rightarrow$ The fruit is most likely an apple.
+\end{enumerate}
 \end{document}
