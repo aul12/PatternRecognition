@@ -20,6 +20,7 @@
 \usepackage{circuitikz}
 \usepackage{listings} % needed for the inclusion of source code
 \usepackage[final]{pdfpages}
+\usepackage{subcaption}
 
 \usetikzlibrary{calc,shapes.multipart,chains,arrows}
 
@@ -36,6 +37,7 @@
     \section{Discrete Naive Bayer Classifier}
     \begin{enumerate}
         \item
+        Length: Interval-scale, Sweetness: ordinal-scale, Colour: nominal-scale
         \item
         $\Prb{Banana} \approx \frac{600}{1900} = 31,58\%$
         \item
@@ -57,4 +59,92 @@
 
         $\Rightarrow$ The fruit is most likely an apple.
 \end{enumerate}
+
+    \section{Misclassification Costs}
+    \begin{enumerate}
+        \item
+        Instead of maximizing a probability the costs of misclassification should be minimized. A misclassification occurs if e.g. a sample of class 1 is classified
+        as an instance of class 2. The $l_2$ term for example can be interpreted as the probability of observing an instance of the other class ($\omega_1$) scaled by the cost of
+        wrongly classifying a sample as $\omega_2$. Thus class $\omega_2$ is choosen if the probability of class $\omega_1$ or the cost of confusing a sample
+        of $\omega_1$ with one of $\omega_2$ are low compared to $l_1$ and vice versa.
+        \item
+        \begin{enumerate}
+            \item
+            $\lambda_{12} = 1$
+            \item
+            $\lambda_{12} = 0.5$
+            \item
+            $\lambda_{12} = \frac{2}{3}$
+        \end{enumerate}
+        \item
+        \begin{align*}
+            &l_1(x) \stackrel{!}{=} l_2(x) \\
+            &\Leftrightarrow \lambda_{21} \cdot p(x|\omega_2) \cdot P(\omega_2) = \lambda_{12} \cdot p(x|\omega_1) \cdot P(\omega_1) \\
+            &\Leftrightarrow \lambda_{21} \cdot \frac{1}{\sqrt{\pi}} \cdot \exp{-(x-1)^2} \cdot (1-p) = \lambda_{12} \cdot \frac{1}{\sqrt{\pi}} \cdot \exp(-x^2) \cdot p \\
+            &\Leftrightarrow \frac{\lambda_{12}}{\lambda_{21}} \frac{p}{1-p} = \exp(2x-1) \\
+            &\Leftrightarrow \frac{1}{2} \left( \log\left( \frac{\lambda_{12}}{\lambda_{21}} \frac{p}{1-p} \right) + 1 \right) = x
+        \end{align*}
+        \item
+        Plots
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[t]{0.49\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{A24_Likelihoods.eps}
+            \end{subfigure}
+            \begin{subfigure}[t]{0.49\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{A24_Losses.eps}
+            \end{subfigure}
+        \end{figure}
+        \item
+        Plots
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[t]{0.49\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{A24_Likelihoods.eps}
+            \end{subfigure}
+            \begin{subfigure}[t]{0.49\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{A25_Losses.eps}
+            \end{subfigure}
+        \end{figure}
+        \item
+        Plots
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[t]{0.49\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{A24_Likelihoods.eps}
+            \end{subfigure}
+            \begin{subfigure}[t]{0.49\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{A26_Losses.eps}
+            \end{subfigure}
+        \end{figure}
+        \item
+        \begin{align*}
+            \widehat{x}_0(1, 1, p) \stackrel{!}{=} \frac{1}{2} \\
+            \Rightarrow p = \frac{1}{2}
+        \end{align*}
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[t]{0.49\textwidth}
+                \centering
+                \includegraphics[width=0.9\textwidth]{A27a_Losses.eps}
+                \subcaption{}
+            \end{subfigure}
+            \begin{subfigure}[t]{0.49\textwidth}
+                \centering
+                \includegraphics[width=0.9\textwidth]{A27b_Losses.eps}
+                \subcaption{}
+            \end{subfigure}
+            \begin{subfigure}[t]{0.49\textwidth}
+                \centering
+                \includegraphics[width=0.9\textwidth]{A27c_Losses.eps}
+                \subcaption{}
+            \end{subfigure}
+        \end{figure}
+    \end{enumerate}
 \end{document}
