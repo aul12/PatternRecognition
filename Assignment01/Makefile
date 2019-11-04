@@ -11,8 +11,8 @@ show: main.pdf
 main.pdf: main.tex plots
 	$(RUBBER) -d main.tex
 
-plots: A24.py
-	$(PYTHON) A24.py
+plots: A2.py
+	$(PYTHON) A2.py
 
 clean:
 	$(RUBBER) --clean main.tex
