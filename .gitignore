@@ -4,3 +4,6 @@
 venv
 *.eps
 .idea
+*.fdb_latexmk
+*.fls
+*.synctex.gz
