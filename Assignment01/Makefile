@@ -20,8 +20,12 @@ main.pdf: main.tex plots
 plots: A2.py
 	$(PYTHON) A2.py
 
-clean:
+clean: clean-temp
+	rm -f *.pdf
+	rm -f *.zip
+
+clean-temp:
 	$(RUBBER) --clean main.tex
-	rm *.pdf
-	rm *.eps
-	rm *.zip
+	rm -f *.eps
+	rm -f *-eps-converted-to.pdf
+	rm -f *.log
