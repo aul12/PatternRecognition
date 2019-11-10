@@ -1,17 +1,29 @@
 RUBBER=rubber
 SCREEN=screen
-VIEWER=evince
+VIEWER=xdg-open
 PYTHON=python3
+ZIP=zip
 
 all: main.pdf
 
 show: main.pdf
 	$(SCREEN) -dm $(VIEWER) main.pdf
 
+release: Sheet02GroupP.zip
+
+Sheet02GroupP.zip: main.pdf
+	$(ZIP) Sheet01GroupP.zip main.pdf *.py *.wav
+
 main.pdf: main.tex
 	$(RUBBER) -d main.tex
 
-clean:
+clean: clean-temp
+	rm -f *.pdf
+	rm -f *.zip
+	rm -f *.npy
+
+clean-temp:
 	$(RUBBER) --clean main.tex
-	rm *.pdf
-	rm *.eps
+	rm -f *.eps
+	rm -f *-eps-converted-to.pdf
+	rm -f *.log
