@@ -43,21 +43,35 @@
             \midrule
             $\begin{pmatrix} 0 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ &
                 $\begin{pmatrix} 2 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 3 & 0 \\ 0 & 3 \end{pmatrix}$ &
-                   b & e  \\
+                (b) & (e)  \\
             $\begin{pmatrix} 0 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ &
                 $\begin{pmatrix} 2 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 1 & 0 \\ 0 & 3 \end{pmatrix}$ &
-                   c & f \\
+                (c) & (f) \\
             $\begin{pmatrix} 0 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}$ &
                 $\begin{pmatrix} 2 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 6 & 0 \\ 0 & 1 \end{pmatrix}$ &
-                   a & d \\
+                (a) & (d) \\
             \bottomrule
         \end{tabular}
         \caption{Parameters for the Gaussian functions which define the decision surfaces.}
     \end{table}
     
     \paragraph{First Row}
-    Both covariance matrices are multiples of the identity matrix, therefor the decision boundary is a circle. The circle is shifted to the left on the $x_1$-axis,
-    because the gaussians are not centered.
+    Both gaussian distributions have covariance matrices that are multiples of the identity matrix. 
+    The first gaussian is centered around $(0,0)$, with a variance of $1$, the second gaussian is centred around $(2,0)$ with a variance of $3$.
+    These properties can be seen by the gaussians in subfigure (e). 
+    Looking at these graphs it can be seen that all points right of approx. $x_1 = 2$ are classified as class two.
+    Additionally all points on the far left (approx. $x_1 < 5$) are classified as class two as well due to the higher variance of the gaussian of class two.
+    This behaviour along the $x_1$-axis can be seen in subfigure (b).
+
+    \paragraph{Second row}
+    The gaussian distributions that are listed in the second row both have a variance of $1$ along the $x_1$ axis. 
+    This yields one decision boundary along the $x_1$ axis (which is still dependent one the $x_2$ value).
+    These properties can be seen in subfigure (f) (the decision boundary is at approx. $2$), and subfigure (c).
+
+    \paragraph{Third row}
+    The variance of the first gaussian distribution along the $x_2$ axis is larger than the variance of the second distribution along the $x_2$ axis.
+    These properties can only be seen in subfigure (d). This graph shows that there is a line at $x_1 =0$ which completly belongs to class one.
+    This can only be seen in subfigure (a).
 
     \section{Euclidean Distance, Standardization, Mahalanobis Distance}
     \subsection{}

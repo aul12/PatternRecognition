@@ -12,7 +12,7 @@ show: main.pdf
 release: Sheet03GroupP.zip
 
 Sheet03GroupP.zip: main.pdf
-	$(ZIP) Sheet03GroupP.zip main.pdf *.py *.wav
+	$(ZIP) Sheet03GroupP.zip main.pdf *.py
 
 main.pdf: main.tex
 	$(RUBBER) -d main.tex
