@@ -43,7 +43,7 @@
             \midrule
             $\begin{pmatrix} 0 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ &
                 $\begin{pmatrix} 2 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 3 & 0 \\ 0 & 3 \end{pmatrix}$ &
-                    b & e  \\
+                   b & e  \\
             $\begin{pmatrix} 0 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ &
                 $\begin{pmatrix} 2 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 1 & 0 \\ 0 & 3 \end{pmatrix}$ &
                    c & f \\
@@ -58,4 +58,58 @@
     \paragraph{First Row}
     Both covariance matrices are multiples of the identity matrix, therefor the decision boundary is a circle. The circle is shifted to the left on the $x_1$-axis,
     because the gaussians are not centered.
+
+    \section{Euclidean Distance, Standardization, Mahalanobis Distance}
+    \subsection{}
+    \begin{enumerate}[label=\alph*)]
+        \item In the Figure the closest point to $(1,1200)$ is $(1.5,1000)$
+        \item The closest point is not the point which seems to be the closest in the figure. This is due to the fact that the two axis are not scaled the same. 
+            As a result the distance in $y$-direction (monthly income), is of much higher importance than the distance in $x$-direction (years of education).
+    \end{enumerate}
+
+    \subsection{}
+    \begin{enumerate}[label=\alph*)]
+        \item For a random variable $x$ let $U$ denote the unit of this variable. The unit of the variance $\mu_x$ of this random variable is thus $U$ as well.
+            The unit of the variance of a random variable is given by:
+            \begin{eqnarray*}
+                [\sigma_x^2] &=& \left[\frac{1}{n-1} \cdot \sum_{i=1}^n {(x_i - \mu_x)}^2\right] \\
+                &=& \left[\frac{1}{n-1}\right] \cdot \sum_{i=1}^n \left[{(x_i - \mu_x)}^2\right] \\
+                &=& 1 \cdot {([x_i - \mu_x])}^2 \\
+                &=& 1 \cdot U^2 \\
+                &=& U^2
+            \end{eqnarray*}
+            Thus the unit of the standard deviation $\sigma_x = \sqrt{\sigma_x^2}$ is the same as the unit of the random variable $\sqrt{U^2} = U$.
+            As a result $\tilde{x}$ is unitless: $[\tilde{x}] = [\frac{x - \mu_x}{\sigma_x}] = 1$.
+        \item By normalizing the random variables by their respective standard deviation the standard deviation and thus the variance of the data is $1$.
+            This yields random variables with equal scale, and as a result the distance between the points is not biased towards one variable.
+        \item The $x_i$ and $x_j$ that are given in the exercise are refered to as $x$ and $y$ in this proof to avoid confusion with the subscribed used for element indexing.
+            \begin{eqnarray*}
+                d_E(\tilde{x}_i, \tilde{y}_j) &=& \norm{\tilde{x}_i - \tilde{x}_j}_2 \\
+                    &=& \sqrt{{(\tilde{x}_1 - \tilde{y}_1)}^2 + {(\tilde{x}_2 - \tilde{y}_2)}^2} \\
+                    &=& \sqrt{{\left(\frac{x_1 - \mu_1}{\sigma_1} - \frac{y_1 - \mu_1}{\sigma_1}\right)}^2 + {\left(\frac{x_2 - \mu_2}{\sigma_2} - \frac{y_2 - \mu_2}{\sigma_2}\right)}^2} \\
+                    &=& \sqrt{{\left(\frac{x_1 - \mu_1 - (y_1 - \mu_1)}{\sigma_1}\right)}^2 + {\left(\frac{x_2 - \mu_2 - (y_2 - \mu_2)}{\sigma_2}\right)}^2} \\
+                    &=& \sqrt{{\left(\frac{x_1 - y_1}{\sigma_1}\right)}^2 + {\left(\frac{x_2 - y_2}{\sigma_2}\right)}^2} \\
+                    &=& \sqrt{\frac{{(x_1 - y_1)}^2}{\sigma_1^2} + \frac{{(x_2 - y_2)}^2}{\sigma_2^2}} \\
+                    &=& \sqrt{
+                        \begin{pmatrix}x_1 - y_1 & x_2 - y_2 \end{pmatrix} 
+                            \begin{pmatrix} \frac{1}{\sigma_1^2} & 0 \\ 0 & \frac{1}{\sigma_2^2} \end{pmatrix} 
+                            \begin{pmatrix}x_1 - y_1 \\ x_2 - y_2 \end{pmatrix}}\\
+                    &=& \sqrt{{(x-y)}^\text{T}
+                            {\begin{pmatrix} \sigma_1^2 & 0 \\ 0 & \sigma_2^2 \end{pmatrix}}^{-1}
+                            (x-y)} \\
+                    &=& \sqrt{{(x-y)}^\text{T}
+                            S^{-1}
+                            (x-y)} \\
+                    &=& d_S(x,y)
+            \end{eqnarray*}
+    \end{enumerate}
+
+    \subsection{}
+    \begin{enumerate}[label=\alph*)]
+        \item @TODO
+        \item @TODO
+    \end{enumerate}
+
+    \subsection{}
+    \lstinputlisting[language=Python]{distance.py}
 \end{document}
