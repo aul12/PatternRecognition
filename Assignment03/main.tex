@@ -58,10 +58,12 @@
     \paragraph{First Row}
     Both gaussian distributions have covariance matrices that are multiples of the identity matrix. 
     The first gaussian is centered around $(0,0)$, with a variance of $1$, the second gaussian is centred around $(2,0)$ with a variance of $3$.
-    These properties can be seen by the gaussians in subfigure (e). 
+    Therefore the difference between $\sigma_x^2$ of both gaussians is larger than the in the second row which means that the corresponding slice
+    is shown in subfigure (e) as opposed to (f). Subfigure (d) is not possible either because it belongs to the third row as explained shortly.
     Looking at these graphs it can be seen that all points right of approx. $x_1 = 2$ are classified as class two.
     Additionally all points on the far left (approx. $x_1 < 5$) are classified as class two as well due to the higher variance of the gaussian of class two.
-    This behaviour along the $x_1$-axis can be seen in subfigure (b).
+    Further more since both gaussians have multiples of the identity as covariance matrices, the decision surface takes the shape of a circle which can be seen
+    subfigure (b).
 
     \paragraph{Second row}
     The gaussian distributions that are listed in the second row both have a variance of $1$ along the $x_1$ axis. 
@@ -70,7 +72,7 @@
 
     \paragraph{Third row}
     The variance of the first gaussian distribution along the $x_2$ axis is larger than the variance of the second distribution along the $x_2$ axis.
-    These properties can only be seen in subfigure (d). This graph shows that there is a line at $x_1 =0$ which completly belongs to class one.
+    These properties can only be seen in subfigure (d). This graph shows that there is an area parallel to the $x_1$ axis completely belonging to class one.
     This can only be seen in subfigure (a).
 
     \section{Euclidean Distance, Standardization, Mahalanobis Distance}
@@ -96,7 +98,7 @@
             As a result $\tilde{x}$ is unitless: $[\tilde{x}] = [\frac{x - \mu_x}{\sigma_x}] = 1$.
         \item By normalizing the random variables by their respective standard deviation the standard deviation and thus the variance of the data is $1$.
             This yields random variables with equal scale, and as a result the distance between the points is not biased towards one variable.
-        \item The $x_i$ and $x_j$ that are given in the exercise are refered to as $x$ and $y$ in this proof to avoid confusion with the subscribed used for element indexing.
+        \item The $x_i$ and $x_j$ that are given in the exercise are refered to as $x$ and $y$ in this proof to avoid confusion with the subscripts used for element indexing.
             \begin{eqnarray*}
                 d_E(\tilde{x}_i, \tilde{y}_j) &=& \norm{\tilde{x}_i - \tilde{x}_j}_2 \\
                     &=& \sqrt{{(\tilde{x}_1 - \tilde{y}_1)}^2 + {(\tilde{x}_2 - \tilde{y}_2)}^2} \\
