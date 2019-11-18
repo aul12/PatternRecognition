@@ -1,0 +1,61 @@
+ 
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tikz-timing}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{xstring}
+\usepackage{circuitikz}
+\usepackage{listings} % needed for the inclusion of source code
+\usepackage[final]{pdfpages}
+\usepackage{subcaption}
+
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+
+\newcommand{\Prb}[1]{P(\text{#1})}
+\newcommand{\CPr}[2]{P(\text{#1}|\text{#2})}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\title{Pattern Recognition}
+\author{Tim Luchterhand, Paul Nykiel, Jonas Strauch (Group P)}
+
+\begin{document}
+    \maketitle
+    \section{Decision Surfaces via Gaussian Density Functions [Pen and Paper]}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccccc}
+            \toprule
+            $\mu_1$ & $\Sigma_1$ & $\mu_2$ & $\Sigma_2$ & Decision Surface & Slice \\
+            \midrule
+            $\begin{pmatrix} 0 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ &
+                $\begin{pmatrix} 2 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 3 & 0 \\ 0 & 3 \end{pmatrix}$ &
+                    b & e  \\
+            $\begin{pmatrix} 0 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ &
+                $\begin{pmatrix} 2 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 1 & 0 \\ 0 & 3 \end{pmatrix}$ &
+                   c & f \\
+            $\begin{pmatrix} 0 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}$ &
+                $\begin{pmatrix} 2 \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 6 & 0 \\ 0 & 1 \end{pmatrix}$ &
+                   a & d \\
+            \bottomrule
+        \end{tabular}
+        \caption{Parameters for the Gaussian functions which define the decision surfaces.}
+    \end{table}
+    
+    \paragraph{First Row}
+    Both covariance matrices are multiples of the identity matrix, therefor the decision boundary is a circle. The circle is shifted to the left on the $x_1$-axis,
+    because the gaussians are not centered.
+\end{document}
