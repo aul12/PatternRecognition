@@ -100,7 +100,7 @@
             This yields random variables with equal scale, and as a result the distance between the points is not biased towards one variable.
         \item The $x_i$ and $x_j$ that are given in the exercise are refered to as $x$ and $y$ in this proof to avoid confusion with the subscripts used for element indexing.
             \begin{eqnarray*}
-                d_E(\tilde{x}_i, \tilde{y}_j) &=& \norm{\tilde{x}_i - \tilde{x}_j}_2 \\
+                d_E(\tilde{x}, \tilde{y}) &=& \norm{\tilde{x} - \tilde{y}}_2 \\
                     &=& \sqrt{{(\tilde{x}_1 - \tilde{y}_1)}^2 + {(\tilde{x}_2 - \tilde{y}_2)}^2} \\
                     &=& \sqrt{{\left(\frac{x_1 - \mu_1}{\sigma_1} - \frac{y_1 - \mu_1}{\sigma_1}\right)}^2 + {\left(\frac{x_2 - \mu_2}{\sigma_2} - \frac{y_2 - \mu_2}{\sigma_2}\right)}^2} \\
                     &=& \sqrt{{\left(\frac{x_1 - \mu_1 - (y_1 - \mu_1)}{\sigma_1}\right)}^2 + {\left(\frac{x_2 - \mu_2 - (y_2 - \mu_2)}{\sigma_2}\right)}^2} \\
@@ -123,9 +123,17 @@
     \subsection{}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{A3.pdf}
-        \caption{Plot of the data points and the isocurve (in red)}
+        \includegraphics[width=\textwidth]{A3_1.pdf}
+        \caption{Plot of the data points and the isocurve (in red) around the mean}
     \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{A3_2.pdf}
+        \caption{Plot of the data points and the isocurve (in red) around (5,3200)}
+    \end{figure}
+    By moving the isocurve around $(5,3200)$ it can be seen, that $(7,4200)$ is on the isocurve and $(5.5,2400)$ is outside of the isocurve. Thus the distance of $(5,3200)$ to $(7,4200)$ is smaller than the distance to $(5.5,2400)$.
+    
 
     \subsection{}
     \lstinputlisting[language=Python]{distance.py}

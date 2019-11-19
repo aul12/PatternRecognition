@@ -8,3 +8,4 @@ venv
 *.fls
 *.synctex.gz
 *.npy
+*.zip
