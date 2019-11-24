@@ -14,8 +14,11 @@ release: Sheet04GroupP.zip
 Sheet04GroupP.zip: main.pdf
 	$(ZIP) $@  main.pdf *.py
 
-main.pdf: main.tex
+main.pdf: main.tex A1.eps
 	$(RUBBER) -d main.tex
+
+A1.eps: A1.py
+	$(PYTHON) A1.py
 
 clean: clean-temp
 	rm -f *.pdf
