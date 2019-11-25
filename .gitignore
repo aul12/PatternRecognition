@@ -9,3 +9,5 @@ venv
 *.synctex.gz
 *.npy
 *.zip
+*.pickle
+.ipynb_checkpoints

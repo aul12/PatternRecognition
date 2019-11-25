@@ -84,9 +84,9 @@
                     \begin{figure}[H]
                         \centering
                         \begin{tikzpicture}
-                            \draw[line width=0.3mm, ->] (0,0) -- (9,0) node[below, pos=1]{$x$};
+                            \draw[line width=0.3mm, ->] (-1,0) -- (8,0) node[below, pos=1]{$x$};
                             \draw[line width=0.3mm, ->] (0,0) -- (0,6) node[left, pos=1]{$\hat{p}(x)$};
-                            \foreach \x in {0,...,8}{
+                            \foreach \x in {0,...,7}{
                                 \draw[line width=0.3mm] (\x,0) -- (\x,-0.2) node[below, pos=0.5]{$\x$};
                             }
                             \foreach \y in {0,...,4}{
@@ -106,9 +106,9 @@
                     \begin{figure}[H]
                         \centering
                         \begin{tikzpicture}
-                            \draw[line width=0.3mm, ->] (0,0) -- (9,0) node[below, pos=1]{$x$};
+                            \draw[line width=0.3mm, ->] (-1,0) -- (8,0) node[below, pos=1]{$x$};
                             \draw[line width=0.3mm, ->] (0,0) -- (0,6) node[left, pos=1]{$\hat{p}(x)$};
-                            \foreach \x in {0,...,8}{
+                            \foreach \x in {-1,...,7}{
                                 \draw[line width=0.3mm] (\x,0) -- (\x,-0.2) node[below, pos=0.5]{$\x$};
                             }
                             \foreach \y in {0,...,4}{
@@ -128,9 +128,9 @@
                     \begin{figure}[H]
                         \centering
                         \begin{tikzpicture}
-                            \draw[line width=0.3mm, ->] (-1,0) -- (9,0) node[below, pos=1]{$x$};
+                            \draw[line width=0.3mm, ->] (-1,0) -- (8,0) node[below, pos=1]{$x$};
                             \draw[line width=0.3mm, ->] (0,0) -- (0,6) node[left, pos=1]{$\hat{p}(x)$};
-                            \foreach \x in {-1,...,8}{
+                            \foreach \x in {-1,...,7}{
                                 \draw[line width=0.3mm] (\x,0) -- (\x,-0.2) node[below, pos=0.5]{$\x$};
                             }
                             \foreach \y in {0,...,4}{
@@ -154,5 +154,13 @@
                         \caption{Probability density function estimated using the Parzen window estimate with uniform distributions as a kernel function ($h=2.5$)}
                     \end{figure}
             \end{enumerate}
+    \end{enumerate}
+
+    \section{Parzen Window (2D)}
+    \begin{enumerate}
+        \item For the programm see \textit{A3.ipynb}.
+            \addtocounter{enumi}{3}
+        \item A smooth PDF which still resembles the distribution is achieved with $h=30$.
+        \item The value of $h$ depends on the scale of the data points, if all data points are scaled by $f$, $h$ should be scaled by $f$ as well. Thus there can not be a good, fixed, value for $h$ independent of the scale (and thus standard deviation) of the data. 
     \end{enumerate}
 \end{document}
