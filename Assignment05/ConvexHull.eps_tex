@@ -1,0 +1,78 @@
+%% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'ConvexHull.eps' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{323.59907255bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.82412333)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength]{ConvexHull.eps}}%
+    \put(0.16134852,0.3180289){\color[rgb]{0.36862745,0.50588235,0.70980392}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}●\\●●●●\end{tabular}}}}%
+    \put(0.46521351,0.45904107){\color[rgb]{0.88235294,0.61176471,0.14117647}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}■■■■■\end{tabular}}}}%
+    \put(0.84330974,0.43661219){\color[rgb]{0.36862745,0.50588235,0.70980392}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}●\end{tabular}}}}%
+    \put(0.84330974,0.38034406){\color[rgb]{0.88235294,0.61176471,0.14117647}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}■\end{tabular}}}}%
+    \put(0.26628849,0.27285198){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.11157866\unitlength}\raggedright $c_1$\end{minipage}}}%
+    \put(0.4690189,0.45243503){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.16408625\unitlength}\raggedright $c_{-1}$\end{minipage}}}%
+    \put(0.84334682,0.55825317){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.36796977\unitlength}\raggedright \end{minipage}}}%
+    \put(0.86787815,0.45349784){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.1783494\unitlength}\raggedright Class $\omega_1$\end{minipage}}}%
+    \put(0.8734875,0.4007348){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.22144494\unitlength}\raggedright Class $\omega_{-1}$\end{minipage}}}%
+    \put(0.76284696,0.18017424){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright 4\end{minipage}}}%
+    \put(0.60953115,0.18018932){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright 3\end{minipage}}}%
+    \put(0.45969123,0.17997053){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright 2\end{minipage}}}%
+    \put(0.30786228,0.18017424){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright 1\end{minipage}}}%
+    \put(0.14504043,0.17586279){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright 0\end{minipage}}}%
+    \put(0.13272151,0.34094623){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright 1\end{minipage}}}%
+    \put(0.13340806,0.48216134){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright 2\end{minipage}}}%
+    \put(0.13305347,0.62272484){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright 3\end{minipage}}}%
+    \put(0.13310628,0.76858672){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright 4\end{minipage}}}%
+    \put(0.80939849,0.19554937){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright x\end{minipage}}}%
+    \put(0.15603334,0.82892617){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0215656\unitlength}\raggedright y\end{minipage}}}%
+  \end{picture}%
+\endgroup%
