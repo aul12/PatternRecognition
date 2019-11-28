@@ -20,6 +20,7 @@
 \usepackage[final]{pdfpages}
 \usepackage{subcaption}
 \usepackage{import}
+\usepackage{cleveref}
 
 \usetikzlibrary{calc,shapes.multipart,chains,arrows}
 
@@ -100,7 +101,32 @@
         \begin{figure}[h!]
             \centering
             \includegraphics[scale=0.8]{a2.eps}
+            \caption{Resulting separation line.}
+            \label{fig:a2}
         \end{figure}
+        \item
+        \begin{enumerate}
+            \item
+            In \cref{fig:a2} the new point $\mathbf{x}_3$ lies above the separation line and thus belongs to class $\omega_{-1}$.
+            \item
+            \begin{align*}
+                \text{Class}(\mathbf{x}_3) &= \text{sig}\left( \sum_{i=1}^2{\alpha_i T_i \mathbf{x}_i^\text{T} \mathbf{x}_3} + w_0 \right) \\
+                &= \text{sig}\left( \frac{2}{5} \cdot 4 - \frac{2}{5} \cdot 10 + \frac{11}{5} \right) \\
+                &= \text{sig}\left(-\frac{1}{5} \right) = -1
+            \end{align*}
+            Alternative way:
+            \begin{align*}
+                \text{Class}(\mathbf{x}_3) &= \text{sig}\left(\mathbf{w}^\text{T} \mathbf{x}_3 + w_0 \right) \\
+                &= \text{sig}\left(-\frac{1}{5} \right) = -1
+            \end{align*}
+        \end{enumerate}
+        \item
+        \begin{enumerate}
+            \item
+            For $N$ points, $N$ parameters $\alpha_i, \ i \in \{1, \dots, N\}$ are needed and the sum goes from 1 to $N$.
+            \item
+            $\alpha_i > 0 \Rightarrow \mathbf{x}_i$ is support vector.
+        \end{enumerate}
     \end{enumerate}
     
 \end{document}
