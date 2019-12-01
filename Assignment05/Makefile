@@ -14,8 +14,11 @@ release: Sheet05GroupP.zip
 Sheet05GroupP.zip: main.pdf
 	$(ZIP) $@  main.pdf *.py *.ipynb
 
-main.pdf: main.tex *.eps
+main.pdf: main.tex a1.eps a2.eps a16.eps
 	$(RUBBER) -d main.tex
+
+%.eps: %.svg
+	inkscape $< -E $@ --export-ignore-filters --export-ps-level=3
 
 clean: clean-temp
 	rm -f *.pdf
