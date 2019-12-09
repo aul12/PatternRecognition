@@ -28,6 +28,7 @@
 \newcommand{\CPr}[2]{P(\text{#1}|\text{#2})}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\rank}{rank}
 
 %Inkscape fuckery
 \newcommand{\incfig}[2][\columnwidth]{%
@@ -161,5 +162,40 @@
             \end{enumerate}
         \item
             By maximizing the distance between the means of the classes the projected standard deviation, and thus the variance, of the classes is not taken into account. As a result the projected size of the classes is not considered and the classes can overlap in the projected space.
+        \item 
+            \begin{enumerate}[label=\alph*)]
+                \item
+                    The rank-inequality of sylvester is:
+                    \begin{equation*}
+                        \rank(A B) \leq \min \{ \rank(A), \rank(B) \}
+                    \end{equation*}
+                    Thus it holds, that
+                    \begin{equation*}
+                        \rank(S_W^{-1} S_B) \leq \min \{\rank(S_W^{-1}), \rank(S_B)\} 
+                            = \min \{\rank(S_W^{-1}), 1\} \leq 1
+                    \end{equation*}
+                    Hence there is at maximum one linear independent vector in $S_W^{-1} S_B$,
+                    as a result the variance along the second axis of the matrix is zero,
+                    thus the second eigenvalue is 0.
+                \item
+                    \begin{eqnarray*}
+                        \tilde{x}_1 &=& u_1^\text{T} x_1 \\
+                            &=& \begin{pmatrix} 0.25 & -0.97 \end{pmatrix}
+                                \begin{pmatrix} 0.38 \\ -0.42 \end{pmatrix} \\
+                            &=& 0.50 \\
+                        \tilde{x}_2 &=& u_1^\text{T} x_2 \\
+                            &=& \begin{pmatrix} 0.25 & -0.97 \end{pmatrix}
+                                \begin{pmatrix} 1.88 \\ 1.08 \end{pmatrix} \\
+                            &=& -0.58
+                    \end{eqnarray*}
+                \item The first component of the vector is weighted by $0.25$, the second
+                    component by $0.97$, thus the second axis, that is $y$, is more important.
+                \item For the given data points every threshold $-0.58 < w_0 < 0.5$
+                    is able to divide the data, the maximal separation is achieved
+                    for a $w_0$ in the middle of both points:
+                    \begin{equation*}
+                        w_0 = \frac{\tilde{x}_1 + \tilde{x}_2}{2} = -0.04
+                    \end{equation*}
+            \end{enumerate}
     \end{enumerate}
 \end{document}
