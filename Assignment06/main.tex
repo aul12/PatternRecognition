@@ -67,7 +67,11 @@
                                 \end{pmatrix}
                     \end{eqnarray*}
                 \item
-                    The rank of $S_B$ is 1 (assuming $\mu_1 - \mu_2 \neq \vec{0}$) as all columns are multiples of each other and thus linearly dependent.
+                    The rank of $S_B$ is 1 (assuming $\mu_1 - \mu_2 \neq \vec{0}$) as all columns are multiples of each other and thus linearly dependent. In this case it holds that:
+                    \begin{equation*}
+                        S_B =   \left( d_x \begin{pmatrix}  d_x \\ d_y \end{pmatrix}, d_y \begin{pmatrix}  d_x \\ d_y \end{pmatrix} \right)
+                    \end{equation*}
+                    In general this holds for the outer product of vectors of arbitrary dimensions.
             \end{enumerate}
         \item
             \begin{enumerate}[label=\alph*)]
@@ -165,7 +169,7 @@
         \item 
             \begin{enumerate}[label=\alph*)]
                 \item
-                    The rank-inequality of sylvester is:
+                    The rank-inequality of Sylvester is:
                     \begin{equation*}
                         \rank(A B) \leq \min \{ \rank(A), \rank(B) \}
                     \end{equation*}
@@ -174,9 +178,10 @@
                         \rank(S_W^{-1} S_B) \leq \min \{\rank(S_W^{-1}), \rank(S_B)\} 
                             = \min \{\rank(S_W^{-1}), 1\} \leq 1
                     \end{equation*}
-                    Hence there is at maximum one linear independent vector in $S_W^{-1} S_B$,
-                    as a result the variance along the second axis of the matrix is zero,
-                    thus the second eigenvalue is 0.
+                    Hence there is at maximum one linear independent vector in $S_W^{-1} S_B$.
+                    As a result the variance along the second axis of the matrix is zero,
+                    thus the second eigenvalue is 0. This is true for all datasets since the rank
+                    of $S_B$ is always 1 as shown in 1 b).
                 \item
                     \begin{eqnarray*}
                         \tilde{x}_1 &=& u_1^\text{T} x_1 \\
