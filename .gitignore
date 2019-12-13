@@ -11,3 +11,4 @@ venv
 *.zip
 *.pickle
 .ipynb_checkpoints
+*.csv
