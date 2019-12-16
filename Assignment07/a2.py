@@ -111,8 +111,9 @@ def main():
     reduced_space = projection[:, -2:]
     reduced_space = np.real(reduced_space) + np.imag(reduced_space)
 
-    # 4. c) Train the SVM
-    classifier = SVC()
+    # 4. c) Train the SVM. In version 0.22, gamma is set to scale by default resulting in almost straight separation
+    #  lines. By setting it to auto the same curved separation lines as seen in the exercise sheet can be achieved
+    classifier = SVC(gamma="auto")
     print("training svm...")
     classifier.fit(reduced_space, labels)
     pred_labels = classifier.predict(reduced_space)

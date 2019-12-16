@@ -21,6 +21,7 @@
 \usepackage{subcaption}
 \usepackage{import}
 \usepackage{cleveref}
+\usepackage{bm}
 
 \usetikzlibrary{calc,shapes.multipart,chains,arrows}
 
@@ -29,6 +30,7 @@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator{\rank}{rank}
+\newcommand{\R}[0]{\mathbb{R}}
 
 %Inkscape fuckery
 \newcommand{\incfig}[2][\columnwidth]{%
@@ -45,7 +47,22 @@
     To use the python file a2.py please specify the path to the train and test file in that particular order as program arguments.
     The comments in the code mark the different sub tasks.
     \begin{enumerate}
-        \item @TODO
+        \item Given that $k > C$, $A$ has at most the rank $C-1$. Proof:
+        \begin{align*}
+            \sum_{k=1}^C a_k \left(\bm{\mu}_k - \frac{1}{C}\sum_{i=1}^C \bm{\mu}_i\right) = \mathbf{0} \\
+            \Leftrightarrow \sum_{k=1}^C a_k \bm{\mu}_k - \sum_{k=1}^C a_k \frac{1}{C}\sum_{i=1}^C \bm{\mu}_i = \mathbf{0} \\
+            \Leftrightarrow a_k = a \in \R \ \forall k
+        \end{align*}
+        It follows that there can be no $C$ linearily independent vectors $\bm{\mu}_k - \bm{\mu}$. If we take only $C-1$ however:
+        \begin{align*}
+            \Leftrightarrow &\sum_{k=1}^{C-1} a_k \bm{\mu}_k - \sum_{k=1}^{C-1} a_k \frac{1}{C}\sum_{i=1}^C \bm{\mu}_i = \mathbf{0} \\
+            \Leftrightarrow &\sum_{k=1}^{C-1} a_k \bm{\mu}_k = \frac{a}{C} \sum_{i=1}^C \bm{\mu}_i \\
+            \Leftrightarrow &\sum_{k=1}^{C-1} a_k \bm{\mu}_k = \frac{a}{C} \left(\sum_{i=1}^{C-1} \bm{\mu}_i + \bm{\mu}_C \right) \\
+            \Leftrightarrow &\sum_{k=1}^{C-1} \widetilde{a}_k \bm{\mu}_k = \sum_{i=1}^{C-1} \bm{\mu}_i + \bm{\mu}_C \\
+            \Leftrightarrow &\sum_{k=1}^{C-1} \widetilde{\widetilde{a}}_k \bm{\mu}_k = \bm{\mu}_C \\
+        \end{align*}
+        If we choose $\bm{\mu}_C$ to be linearily independent from $\bm{\mu}_k \ \forall k \in \{1, \cdots, C-1\}$ then the equation is
+        only true for $\widetilde{\widetilde{a_k}} = 0 \ \forall k$. Therefor $C-1$ vectors $\bm{\mu}_k - \bm{\mu}$ are linearily independent.
         \setcounter{enumi}{4}
         \item Looking at the first and second row of the confusion matrix, it can be seen that Opels are often confused with Saabs
         and vice versa. This can also be seen in figure 2 on the exercise sheet where both classes are overlapping heavily. Thus
