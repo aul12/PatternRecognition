@@ -9,10 +9,10 @@ all: main.pdf
 show: main.pdf
 	$(SCREEN) -dm $(VIEWER) main.pdf
 
-release: Sheet06GroupP.zip
+release: Sheet07GroupP.zip
 
-Sheet06GroupP.zip: main.pdf
-	$(ZIP) $@  main.pdf *.py *.ipynb
+Sheet07GroupP.zip: main.pdf a2.py
+	$(ZIP) $@  main.pdf *.py
 
 main.pdf: main.tex
 	$(RUBBER) -d main.tex
