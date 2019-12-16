@@ -89,8 +89,8 @@ def plot_surfaces(data, classifier):
 
 def load_data(path):
     """3. Loads a cvs file and splits it into data and labels"""
-    print("loading data from %s..." % (path, ))
-    raw = np.array(pd.read_csv("train.csv"))
+    print("loading data from %s..." % path)
+    raw = np.array(pd.read_csv(path))
     data = raw[:, 0:-1]
     labels = raw[:, -1]
     return data, labels
@@ -103,8 +103,7 @@ def main():
     print("computing lda...")
     axes, projection, latent = compute_lda(data, labels)
     # 4. a) Compute importance of axis
-    abs_latent = np.abs(latent)
-    importance = abs_latent / np.sum(abs_latent)
+    importance = np.abs(latent / np.sum(latent))
     for c in range(len(importance)):
         print("eigenvalue %d has importance %0.3f" % (c, importance[c]))
 
@@ -127,7 +126,7 @@ def main():
     plt.show()
     print("training done")
 
-    # 5. Do all the stuff again (for a test set which seems to be the same as the train set, at least on December the 16th...)
+    # 5. Do all the stuff again
     test_data, test_labels = load_data(test_data_path)
     print("projecting test data...")
     projected_test_data = np.matmul(test_data, axes)[:, -2:]
