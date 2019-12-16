@@ -59,10 +59,11 @@
             \Leftrightarrow &\sum_{k=1}^{C-1} a_k \bm{\mu}_k = \frac{a}{C} \sum_{i=1}^C \bm{\mu}_i \\
             \Leftrightarrow &\sum_{k=1}^{C-1} a_k \bm{\mu}_k = \frac{a}{C} \sum_{i=1}^{C-1} \bm{\mu}_i + \frac{a}{C} \bm{\mu}_C \\
             \Leftrightarrow &\sum_{k=1}^{C-1} \left(a_k - \frac{a}{C}\right) \bm{\mu}_k = \frac{a}{C} \bm{\mu}_C \\
-            \Leftrightarrow &\sum_{k=1}^{C-1} \widetilde{a}_k \bm{\mu}_k = \frac{a}{C} \bm{\mu}_C \\
+            \Leftrightarrow &\sum_{k=1}^{C-1} \widetilde{a}_k \bm{\mu}_k = \frac{a}{C} \bm{\mu}_C = -\widetilde{a}_c \bm{\mu}_C \\
+            \Leftrightarrow &\sum_{k=1}^{C} \widetilde{a}_k \bm{\mu}_k = \mathbf{0}
         \end{align*}
-        If we choose $\bm{\mu}_C$ to be linearily independent from $\bm{\mu}_k \ \forall k \in \{1, \cdots, C-1\}$ then the equation is
-        only true for $\widetilde{a_k} = 0 \ \forall k$. Therefor $C-1$ vectors $\bm{\mu}_k - \bm{\mu}$ are linearily independent.
+        If we choose $\bm{\mu}_k \ \forall k \in \{1, \cdots, C\}$ to be linearily independent, then the equation is only true for
+        $\widetilde{a}_k = 0 \ \forall k$. Therefor $C-1$ vectors $\bm{\mu}_k - \bm{\mu}$ are linearily independent.
         \setcounter{enumi}{4}
         \item Looking at the first and second row of the confusion matrix, it can be seen that Opels are often confused with Saabs
         and vice versa. This can also be seen in figure 2 on the exercise sheet where both classes are overlapping heavily. Thus
