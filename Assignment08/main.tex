@@ -22,6 +22,7 @@
 \usepackage{import}
 \usepackage{cleveref}
 \usepackage{bm}
+\usepackage{tabularx}
 
 \usetikzlibrary{calc,shapes.multipart,chains,arrows}
 
@@ -71,5 +72,45 @@
              &= e^{-\gamma (x_i^2 +  x_j^2)} \cdot e^{2 \gamma x_i x_j}
              = e^{-\gamma (x_i^2 - 2 x_i x_j + x_j^2)} = e^{-\gamma (x_i - x_j)^2} = k(x_i, x_j)
         \end{align*}
+        \item
+        $ $
+        \begin{enumerate}
+            \item
+            $ $
+            \begin{table}[H]
+                \centering
+                \begin{tabularx}{\textwidth}{l|X|X}
+                    \toprule
+                    Property & $C$ small & $C$ large \\
+                    \midrule
+                    Margin & large & small \\
+                    Complexity & The decision surface approximatly resembles a straight line (therefor rather simple) &
+                    The decision surface curves along data clusters (therfor increasingly complex)\\
+                    Train accuracy & For very small $C$ it seems that the accuracy decreases slightly & Depending on
+                    $\gamma$ it appears that most of the time a higher accuracy can be achieved using large values for $C$ \\
+                    \bottomrule
+                \end{tabularx}
+                \caption{Influence of the parameter $C$ on the decision function}
+            \end{table}
+            Concerning the accuracy: While in some cases a seemingly higher accuracy can be achieved usign large values for $C$
+            there are also cases where neither very large nor very small values are desirable. In these cases moderate values
+            should be chosen. Since these are solely visual observations it is hard to say that large / small values are always
+            good or bad.
+
+            \item
+            $ $
+            \begin{table}[H]
+                \centering
+                \begin{tabularx}{\textwidth}{l|X|X}
+                    \toprule
+                    Property & $\gamma$ small & $\gamma$ large \\
+                    \midrule
+                    Figure & A & B \\
+                    Influence & small & high \\
+                    \bottomrule
+                \end{tabularx}
+                \caption{Influence of the parameter $\gamma$ on the kernel and the decision function}
+            \end{table}
+        \end{enumerate}
     \end{enumerate}
 \end{document}
