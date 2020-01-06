@@ -49,5 +49,49 @@
             \begin{equation*}
                 \phi(x) = \begin{pmatrix} x \\ {(x + 0.5)}^2 \end{pmatrix}
             \end{equation*}
+            \setcounter{enumi}{3}
+        \item
+            \begin{enumerate}[label=\alph*)]
+                \item
+                    \begin{eqnarray*}
+                        <\tilde{x}_i, \tilde{x}>
+                            &=& x_i x + {(x_i + 0.5)}^2 {(x + 0.5)}^2 \\
+                            &=& x_i x + {\left((x_i + 0.5) (x + 0.5)\right)}^2 \\
+                            &=& x_i x + {(x_i x + 0.5 x_i + 0.5 x + 0.25)}^2 \\
+                            &=& x_i x + {(x_i x + 0.5 x_i)}^2 
+                                + 2 (x_i x + 0.5 x_i) (0.5 x + 0.25)
+                                + {(0.5 x + 0.25)}^2 \\
+                            &=& x_i x + x_i^2 x^2 + x_i^2 x + 0.25 x_i^2
+                                + 2 (0.5 x_i x^2 + 0.25 x_i x + 0.5 x^2 x_i + 0.125 x_i) \\
+                                && + 0.25 x^2 + 0.25 x + 0.0625 \\
+                            &=& x_i x + x_i^2 x^2 + x_i^2 x + 0.25 x_i^2
+                                + x_i x^2 + 0.5 x_i x + x^2 x_i + 0.25 x_i \\
+                                && + 0.25 x^2 + 0.25 x + 0.0625 \\
+                            &=& x_i^2 (x^2 + x + 0.25)
+                                + x_i (x^2 + x + 0.5 x + x^2 + 0.25)
+                                + 0.25 x^2 + 0.25 x + 0.0625 \\
+                            &=& x_i^2 (x^2 + x + 0.25)
+                                + x_i (2 x^2 + 1.5 x + 0.25)
+                                + 0.25 x^2 + 0.25 x + 0.0625 \\
+                            &=& k(x_i, x)
+                    \end{eqnarray*}
+            \end{enumerate}
+            \setcounter{enumi}{5}
+        \item
+            \begin{eqnarray*}
+                d(\tilde{x}, H) \norm{w}_2 &=& <w, \tilde{x}> + w_0 \\
+                    &=& <w, \phi(x)> + w_0 \\
+                    &\stackrel{\text{script p. 101}}{=}& <\sum_{i=1}^4 \alpha_i T_i \tilde{x_i}, \tilde{x}> + w_0 \\
+                    &\stackrel{\text{linearity}}{=}& \sum_{i=1}^4 \alpha_i T_i <\tilde{x}_i, \tilde{x}> + w_0 \\
+                    &\stackrel{\text{(2)}}{=}& \sum_{i=1}^4 \alpha_i T_i k(x_i,x) + w_0
+            \end{eqnarray*}
+        \item
+            \begin{eqnarray*}
+                \norm{w}_2 &=& \norm{\sum_{i=1}^4 \alpha_i T_i \tilde{x}_i}_2 \\
+                    &=& \sqrt{<\sum_{i=1}^4 \alpha_i T_i \tilde{x}_i, \sum_{i=1}^4 \alpha_i T_i \tilde{x}_i>} \\
+                    &\stackrel{\text{linearity}}{=}& \sqrt{\sum_{i=1}^4 \alpha_i T_i <\tilde{x}_i, \sum_{j=1}^4 \alpha_j T_j \tilde{x}_j>} \\
+                    &\stackrel{\text{linearity}}{=}& \sqrt{\sum_{i=1}^4 \alpha_i T_i \sum_{j=1}^4 \alpha_j T_j <\tilde{x}_i, \tilde{x}_j>} \\
+                    &=& \sqrt{\sum_{i=1}^4 \sum_{j=1}^4 T_i T_j \alpha_i \alpha_j <\tilde{x}_i, \tilde{x}_j>} \\
+            \end{eqnarray*}
     \end{enumerate}
 \end{document}
