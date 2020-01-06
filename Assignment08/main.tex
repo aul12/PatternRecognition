@@ -50,4 +50,26 @@
                 \phi(x) = \begin{pmatrix} x \\ {(x + 0.5)}^2 \end{pmatrix}
             \end{equation*}
     \end{enumerate}
+    \section{RBG Kernel}
+    \begin{enumerate}
+        \item
+        Show that for $x_i, x_j \in \R$ it holds that $k(x_i, x_j) = \langle \bm{\phi}(x_i), \bm{\phi}(x_j) \rangle$
+        with $k$ and $\bm{\phi}$ defined as in the exercise sheet.
+        \begin{align*}
+             &\langle \bm{\phi}(x_i), \bm{\phi}(x_j) \rangle = \\
+             &e^{-\gamma x_i^2} e^{-\gamma x_j^2}
+             \left( 1, \sqrt{\frac{2 \gamma}{1!}} x_i, \sqrt{\frac{(2 \gamma)^2}{2!}} x_i^2,
+             \sqrt{\frac{(2 \gamma)^3}{3!}} x_i^3, \cdots \right) \cdot
+             \left( 1, \sqrt{\frac{2 \gamma}{1!}} x_j, \sqrt{\frac{(2 \gamma)^2}{2!}} x_j^2,
+             \sqrt{\frac{(2 \gamma)^3}{3!}} x_j^3, \cdots \right)^\text{T} \\
+             &= e^{-\gamma (x_i^2 + x_j^2)} \left( 1^2 + \sqrt{\frac{2 \gamma}{1!}}^2 x_i x_j
+             + \sqrt{\frac{(2 \gamma)^2}{2!}}^2 x_i^2 x_j^2 + \sqrt{\frac{(2 \gamma)^3}{3!}}^2
+             x_i^3 x_j^3 + \cdots \right) \\
+             &= e^{-\gamma (x_i^2 +  x_j^2)} \left( 1^2 + \frac{2 \gamma}{1!} x_i x_j
+             + \frac{(2 \gamma)^2}{2!} x_i^2 x_j^2 + \frac{(2 \gamma)^3}{3!} x_i^3 x_j^3
+             + \cdots \right) \\
+             &= e^{-\gamma (x_i^2 +  x_j^2)} \cdot e^{2 \gamma x_i x_j}
+             = e^{-\gamma (x_i^2 - 2 x_i x_j + x_j^2)} = e^{-\gamma (x_i - x_j)^2} = k(x_i, x_j)
+        \end{align*}
+    \end{enumerate}
 \end{document}
