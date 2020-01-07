@@ -14,12 +14,14 @@ def main():
     # 1.2
     svm = LinearSVC()
     svm.fit(projected_data_points, classes)
+    # the linear SVC object only returns the decision hyper plane not the alpha parameters...
     print("Decision hyper plane defined by w = (%0.3f, %0.3f) and w_0 = %0.3f" %
           (svm.coef_[0, 0], svm.coef_[0, 1], svm.intercept_))
     # 1.3
     x_5 = 1
     projected_x_5 = np.reshape(phi(x_5), (-1, 1))
     classification = np.sign(np.dot(svm.coef_, projected_x_5) + svm.intercept_).astype(np.int)
+    # alphas computed manually
     alpha = [1, 1, 0, 0]
     print("Manual classification yields: " + str(classification[0]))
     print("Classification by svm object yields: " + str(svm.predict(projected_x_5.T)))

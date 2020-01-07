@@ -55,7 +55,7 @@
             \begin{enumerate}[label=\alph*)]
                 \item
                     \begin{eqnarray*}
-                        <\tilde{x}_i, \tilde{x}>
+                        \langle \tilde{\mathbf{x}}_i, \tilde{\mathbf{x}}\rangle 
                             &=& x_i x + {(x_i + 0.5)}^2 {(x + 0.5)}^2 \\
                             &=& x_i x + {\left((x_i + 0.5) (x + 0.5)\right)}^2 \\
                             &=& x_i x + {(x_i x + 0.5 x_i + 0.5 x + 0.25)}^2 \\
@@ -79,21 +79,24 @@
             \end{enumerate}
             \setcounter{enumi}{5}
         \item
-            \begin{eqnarray*}
-                d(\tilde{x}, H) \norm{w}_2 &=& <w, \tilde{x}> + w_0 \\
-                    &=& <w, \phi(x)> + w_0 \\
-                    &\stackrel{\text{script p. 101}}{=}& <\sum_{i=1}^4 \alpha_i T_i \tilde{x_i}, \tilde{x}> + w_0 \\
-                    &\stackrel{\text{linearity}}{=}& \sum_{i=1}^4 \alpha_i T_i <\tilde{x}_i, \tilde{x}> + w_0 \\
-                    &\stackrel{\text{(2)}}{=}& \sum_{i=1}^4 \alpha_i T_i k(x_i,x) + w_0
-            \end{eqnarray*}
-        \item
-            \begin{eqnarray*}
-                \norm{w}_2 &=& \norm{\sum_{i=1}^4 \alpha_i T_i \tilde{x}_i}_2 \\
-                    &=& \sqrt{<\sum_{i=1}^4 \alpha_i T_i \tilde{x}_i, \sum_{i=1}^4 \alpha_i T_i \tilde{x}_i>} \\
-                    &\stackrel{\text{linearity}}{=}& \sqrt{\sum_{i=1}^4 \alpha_i T_i <\tilde{x}_i, \sum_{j=1}^4 \alpha_j T_j \tilde{x}_j>} \\
-                    &\stackrel{\text{linearity}}{=}& \sqrt{\sum_{i=1}^4 \alpha_i T_i \sum_{j=1}^4 \alpha_j T_j <\tilde{x}_i, \tilde{x}_j>} \\
-                    &=& \sqrt{\sum_{i=1}^4 \sum_{j=1}^4 T_i T_j \alpha_i \alpha_j <\tilde{x}_i, \tilde{x}_j>} \\
-            \end{eqnarray*}
+        \begin{enumerate}
+            \item
+                \begin{eqnarray*}
+                    d(\tilde{\mathbf{x}}, H) \norm{\mathbf{w}}_2 &=& \langle \mathbf{w} , \tilde{\mathbf{x} } \rangle + w_0 \\
+                        &=& \langle \mathbf{w} , \phi(x) \rangle + w_0 \\
+                        &\stackrel{\text{script p. 101}}{=}& \langle \sum_{i=1}^4 \alpha_i T_i \tilde{\mathbf{x} _i}, \tilde{\mathbf{x} }\rangle  + w_0 \\
+                        &\stackrel{\text{linearity}}{=}& \sum_{i=1}^4 \alpha_i T_i \langle \tilde{\mathbf{x} }_i, \tilde{\mathbf{x} }\rangle  + w_0 \\
+                        &\stackrel{\text{(2)}}{=}& \sum_{i=1}^4 \alpha_i T_i k(x_i,x) + w_0
+                \end{eqnarray*}
+            \item
+                \begin{eqnarray*}
+                    \norm{\mathbf{w} }_2 &=& \norm{\sum_{i=1}^4 \alpha_i T_i \tilde{\mathbf{x} }_i}_2 \\
+                        &=& \sqrt{\langle \sum_{i=1}^4 \alpha_i T_i \tilde{\mathbf{x} }_i, \sum_{i=1}^4 \alpha_i T_i \tilde{\mathbf{x} }_i\rangle } \\
+                        &\stackrel{\text{linearity}}{=}& \sqrt{\sum_{i=1}^4 \alpha_i T_i \langle \tilde{\mathbf{x} }_i, \sum_{j=1}^4 \alpha_j T_j \tilde{\mathbf{x} }_j\rangle } \\
+                        &\stackrel{\text{linearity}}{=}& \sqrt{\sum_{i=1}^4 \alpha_i T_i \sum_{j=1}^4 \alpha_j T_j \langle \tilde{\mathbf{x} }_i, \tilde{\mathbf{x} }_j\rangle } \\
+                        &=& \sqrt{\sum_{i=1}^4 \sum_{j=1}^4 T_i T_j \alpha_i \alpha_j \langle \tilde{\mathbf{x} }_i, \tilde{\mathbf{x} }_j\rangle } \\
+                \end{eqnarray*}
+        \end{enumerate}
     \end{enumerate}
 
 
