@@ -12,3 +12,4 @@ venv
 *.pickle
 .ipynb_checkpoints
 *.csv
+__pycache__/
