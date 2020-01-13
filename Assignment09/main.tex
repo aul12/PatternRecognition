@@ -44,22 +44,55 @@
 
 \begin{document}
     \maketitle
+    \section{PCA}
+    Refer to the python script a1.py. Specify the path to the data as program argument.
     \section{SVD}
     \begin{enumerate}
         \item
+        \begin{enumerate}
+            \item
+            \begin{eqnarray}
+                \widetilde{C} &=& \frac{1}{n-1} X X^\text{T} = \frac{1}{n-1} U \Sigma V^\text{T} \cdot \left(U \Sigma V^\text{T} \right)^\text{T} \\
+                &=& \frac{1}{n-1} U \Sigma V^\text{T} \cdot V \Sigma^\text{T} U^\text{T} \\
+                &\stackrel{\tiny\text{orthonormality}}{=}& \frac{1}{n-1} U \Sigma I \Sigma^\text{T} U^\text{T}  \\
+                \label{eq:krasserMist}
+                &\stackrel{\tiny\Sigma \ \text{diag}}{=}& \frac{1}{n-1} U \Sigma^2 U^\text{T} \\
+                &=& \widetilde{W} D \widetilde{W}^\text{T} \ \text{with} \ \widetilde{W} = U \ \text{and} \ D = \frac{\Sigma^2}{n-1}
+            \end{eqnarray}
+            In the same way it can be shown $V$ are the eigenvectors of $X^\text{T} X$.
+
+            \item
+            As seen in equation \ref{eq:krasserMist} the eigenvalues $\lambda_i$ of $\widetilde{C}$ (which are the same eigenvalues as for matrix $C$) are
+            stored in $\Sigma^2$. Therefor the relation between $\lambda_i$ and $s_i$ is $s_i = \sqrt{\lambda_i}$.
+
+            \item
+            Since $X \in \R^{n \times d}$, $\widetilde{C} = X X^\text{T} \in \R^{n \times n}$ and $C = X^\text{T} X \in \R^{d \times d}$. It follows that
+            since $U$ are the eigenvectors of $\widetilde{C}$ that $U \in \R^{n \times n}$ and similarily $V \in \R^{d \times d}$.
+            Given that $X = U \Sigma V^\text{T}$ it follows that $\Sigma \in \R^{n \times d}$
+
+            \item
+            $\Sigma$ is a diagonal block matrix. Therefor its transformation is a scaling operation. $U$ and $V$ ar othonormal matrices which perform a
+            rotation.
+        \end{enumerate}
             \begin{table}[H]
                 \centering
                 \begin{tabularx}{\textwidth}{lllll}
                     \toprule
                     Matrix & Basis & Mapping & Dimension & Transformation \\
                     \midrule
-                    $U$ & $Stuff$ & $\widetilde{W} = U$ & $Stuff$ & Stuff \\
-                    $\Sigma $ & $X^\text{T}X, XX^\text{T}$ & $D = \frac{\Sigma^2}{n-1}$ & Stuff & Stuff \\
-                    $V$ & Sutff & $W = V$ & Stuff & Stuff \\
+                    $U$ & $X X^\text{T}$ & $\widetilde{W} = U$ & $n \times n$ & rotation \\
+                    $\Sigma $ & $X^\text{T}X, XX^\text{T}$ & $D = \frac{\Sigma^2}{n-1}$ & $n \times d$ & scaling \\
+                    $V$ & $X^\text{T} X$ & $W = V$ & $d \times d$ & rotation \\
                     \bottomrule
                 \end{tabularx}
                 \caption{Stuff}
             \end{table}
+
+        \item
+        The corresponding code can be found in a2.py.
+        When using $\varepsilon = 1 \cdot 10^{-8}$ the square root function throws an error. This is due to one eigenvalue being negative.
+        This in turn is due to the fact that the covariance matrix is not positive semidefinite anymore. Thus negative eigenvalues can occur.
+        However covariance matrices are always positive semidefinite. This property is violated here.
     \end{enumerate}
     \section{PCA vs LDA}
     \begin{table}[H]
@@ -68,10 +101,13 @@
             \toprule
             Technique & Supervision & Focus & Projection dimensions \\
             \midrule
-            PCA & unsupervised & explain variance & number of axes in the original space\\
-            LDA & supervised & discriminate classes & stuff \\
+            PCA & unsupervised & explain variance & dimension of the original space\\
+            LDA & supervised & discriminate classes &  number of Classes - 1\\
             \bottomrule
         \end{tabularx}
         \caption{Comparison between LDA and PCA}
     \end{table}
+    Concerning the number of eigenvectors of LDA. As shown previously the matrix $S_B$ has at most the rank of $C-1$ where $C$ is the number
+    of classes. LDA solves the eigenvalue problem $S_w^{-1} S_B w = \lambda w$. The rank of $S_w^{-1} S_B$ is also $C-1$ since $S_w$ has full
+    rank (number of features) since it is invertable and thus the product of both matrices has at most rank $\min\{\rank S_B, \rank S_w^{-1}\}$.
 \end{document}

@@ -30,7 +30,6 @@ def main():
 
     # a 1.3
     covariance_matrix = np.matmul(data_centr.T, data_centr) / (n_samples - 1)
-    print(covariance_matrix.shape)
 
     # a 1.4 a)
     us_eval, us_evec = np.linalg.eig(covariance_matrix)
@@ -44,8 +43,11 @@ def main():
     print("Explained variance along axis 2 is %0.3f%%" % (eval[1] / var_total))
 
     # a 1.5
-    data_proj = np.matmul(evec, data_centr.T)
-    plot_image(data_proj.T, "Projected data")
+    # We expect the image to be rotated so that the shape stands upright. This is due to the fact that
+    # the correlation between the variables (x and y) is the rotation of the image and pca tries to minimize
+    # said correlations
+    data_proj = np.matmul(evec, data_centr.T).T
+    plot_image(data_proj, "Projected data")
 
 
 if __name__ == '__main__':

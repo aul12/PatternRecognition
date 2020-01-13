@@ -7,6 +7,9 @@ import lda
 
 
 def main():
+    if len(sys.argv) != 2:
+        print("Please specify the path to the train data as program argument")
+
     sum_len = 18
     # a 3.1
     data_path = sys.argv[1]
@@ -33,8 +36,8 @@ def main():
     plt.figure()
     plt.xticks(np.arange(1, sum_len + 1, 1))
     plt.xlabel("Number of eigenvectors")
-    plt.ylabel("Explained varince in %")
-    plt.title("Explained variance (culmulated)")
+    plt.ylabel("Explained variance in %")
+    plt.title("Explained variance (cumulated)")
     plt.grid(True)
     plt.plot(np.arange(1, sum_len + 1, 1), cul_sum, ".-")
     plt.show()
