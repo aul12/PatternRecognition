@@ -1,0 +1,61 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tikz-timing}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{xstring}
+\usepackage{circuitikz}
+\usepackage{listings} % needed for the inclusion of source code
+\usepackage[final]{pdfpages}
+\usepackage{subcaption}
+\usepackage{import}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{tabularx}
+
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+
+\newcommand{\Prb}[1]{P(\text{#1})}
+\newcommand{\CPr}[2]{P(\text{#1}|\text{#2})}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\rank}{rank}
+\newcommand{\R}[0]{\mathbb{R}}
+
+%Inkscape fuckery
+\newcommand{\incfig}[2][\columnwidth]{%
+    \def\svgwidth{#1}
+    \import{./}{#2.eps_tex}
+}
+
+\title{Pattern Recognition}
+\author{Tim Luchterhand, Paul Nykiel, Jonas Strauch (Group P)}
+
+\begin{document}
+    \maketitle
+    \section{Basic TensorFlow compututations}
+    \begin{table}[H]
+        \centering
+        \begin{tabularx}{\textwidth}{lllllll}
+            \toprule
+            & $n_1$ & $n_2$ & $n_3$ & $n_4$ & $n_5$ & $n_6$ \\
+            \midrule
+            Value $n_i$ & 2 & 3 & 9 & 18 & 8 & 26\\
+            parent$(n_i)$ & $\{n_2\}$ & $\{n_3\}$ & $\{n_4\}$ & $\{n_6\}$ & $\{n_6\}$ & $\{\}$ \\
+            $\frac{\partial f}{\partial n_i}$& stuff & stuff & stuff & stuff & stuff & stuff \\
+            \bottomrule
+        \end{tabularx}
+        \caption{Comparisons between matrices}
+    \end{table}
+\end{document}
