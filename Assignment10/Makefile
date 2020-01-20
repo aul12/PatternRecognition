@@ -11,8 +11,8 @@ show: main.pdf
 
 release: Sheet10GroupP.zip
 
-Sheet10GroupP.zip: main.pdf *.py
-	$(ZIP) $@  main.pdf *.py
+Sheet10GroupP.zip: main.pdf *.py *.ipynb
+	$(ZIP) $@  main.pdf *.py *.ipynb
 
 main.pdf: main.tex
 	$(RUBBER) -d main.tex

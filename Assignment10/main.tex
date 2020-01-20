@@ -44,18 +44,38 @@
 
 \begin{document}
     \maketitle
-    \section{Basic TensorFlow compututations}
-    \begin{table}[H]
-        \centering
-        \begin{tabularx}{\textwidth}{lllllll}
-            \toprule
-            & $n_1$ & $n_2$ & $n_3$ & $n_4$ & $n_5$ & $n_6$ \\
-            \midrule
-            Value $n_i$ & 2 & 3 & 9 & 18 & 8 & 26\\
-            parent$(n_i)$ & $\{n_2\}$ & $\{n_3\}$ & $\{n_4\}$ & $\{n_6\}$ & $\{n_6\}$ & $\{\}$ \\
-            $\frac{\partial f}{\partial n_i}$& stuff & stuff & stuff & stuff & stuff & stuff \\
-            \bottomrule
-        \end{tabularx}
-        \caption{Comparisons between matrices}
-    \end{table}
+    NOTE: All scripts are intended to be used with tf2. If run with tf1 please change the import of tensorflow.compat.v1 to just tensorflow
+    and remove the line tf.disable\_v2\_behavior()
+    \section{Basic TensorFlow computations}
+    \begin{enumerate}
+        \item
+            The code is located in a1\_1.py.
+        \item
+            The code is located in a1\_2.py.
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\textwidth]{a1_2.eps}
+                \caption{Output of the script}
+            \end{figure}
+        \item
+            $ $
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{lcccccc}
+                    \toprule
+                    & $n_1$ & $n_2$ & $n_3$ & $n_4$ & $n_5$ & $n_6$ \\
+                    \midrule
+                    Value $n_i$ & 2 & 3 & 9 & 18 & 8 & 26\\
+                    parent$(n_i)$ & $\{n_2, n_5\}$ & $\{n_3\}$ & $\{n_4\}$ & $\{n_6\}$ & $\{n_6\}$ & $\{\}$ \\
+                    $\frac{\partial f}{\partial n_i}$& $2 a n_2 + b$& $2 a n_2$ & $a$ & 1 & 1 & 1\\
+                    \bottomrule
+                \end{tabular}
+                \caption{Steps of reverse-mode autodiff}
+            \end{table}
+        \item
+            Parallel paths in the graph can be run in parallel e.g. $n_5$ van be run in parallel to $n_2, n_3, n_4$.
+    \end{enumerate}
+    \section{Neural Networks in TensorFlow}
+    The code is located in the provided jupyter notebook file.
+
 \end{document}

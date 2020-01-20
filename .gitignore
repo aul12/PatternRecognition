@@ -13,3 +13,4 @@ venv
 .ipynb_checkpoints
 *.csv
 __pycache__/
+tf_logs/

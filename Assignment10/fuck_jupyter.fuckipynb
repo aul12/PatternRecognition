@@ -1,0 +1,97 @@
+import numpy as np
+import tensorflow.compat.v1 as tf
+from sklearn.datasets import load_wine
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from datetime import datetime
+import math
+
+tf.disable_v2_behavior()
+
+
+def main():
+    # Make sure we get reproducible results after each kernel restart
+    tf.reset_default_graph()
+    tf.set_random_seed(1337)
+    np.random.seed(1337)
+
+    # 1
+    dataset = load_wine()
+    data = dataset.data
+    labels = dataset.target
+
+    # 2
+    data_train, data_test, labels_train, labels_test = train_test_split(data, labels, test_size=0.3)
+
+    # 3
+    scaler = StandardScaler()
+    scaler.fit(data_train)
+    data_train = scaler.transform(data_train)
+    data_test = scaler.transform(data_test)
+
+    # 4 a
+    n_features = data_train[0].shape[0]
+    n_output = int(np.max(labels) + 1)
+    inp = tf.placeholder(shape=(None, n_features), dtype=tf.float32)
+
+    # 4 b
+    n_neurons = 60
+    target_value = tf.placeholder(shape=None, dtype=tf.int64)
+    std_hidden = math.sqrt(2 / (n_features + n_neurons))
+    w_1 = tf.Variable(tf.random_normal(shape=(n_features, n_neurons), stddev=std_hidden))
+    b_1 = tf.Variable(tf.random_normal(shape=(n_neurons,)))
+    h = tf.nn.tanh(tf.add(tf.matmul(inp, w_1), b_1))
+
+    # 4 c
+    std_output = math.sqrt(2 / (n_neurons + n_output))
+    w_2 = tf.Variable(tf.random_normal(shape=(n_neurons, n_output), stddev=std_hidden))
+    b_2 = tf.Variable(tf.random_normal(shape=(n_output,)))
+    logits = tf.add(tf.matmul(h, w_2), b_2)
+
+    # 4 d
+    cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=target_value, logits=logits)
+
+    # 4 e
+    loss = tf.reduce_mean(cross_entropy)
+
+    # 4 f
+    optimizer = tf.train.AdamOptimizer().minimize(loss)
+
+    # 4 g
+    m = tf.placeholder(dtype=tf.int32)
+    acc = tf.divide(tf.reduce_sum(tf.cast(tf.equal(tf.argmax(logits, axis=-1), target_value), dtype=tf.int32)), m)
+
+    # 4 h
+    now = datetime.utcnow().strftime('%Y-%m-%d %H;%M;%S')
+    logdir = '{}/run-{}/'.format('tf_logs', now)
+    with tf.summary.FileWriter(logdir, tf.get_default_graph()) as file_writer:
+        with tf.Session() as sess:
+            # 5 a
+            sess.run(tf.global_variables_initializer())
+
+            # 5 b
+            epochs = 50
+            for i in range(epochs):
+                sess.run(optimizer, feed_dict={inp: data_train, target_value: labels_train})
+                loss_value, acc_value = sess.run((loss, acc), feed_dict={inp: data_train, target_value: labels_train,
+                                                                         m: data_train.shape[0]})
+                print("Epoch %d: Loss = %f; Accuracy = %f" % (i, loss_value, acc_value))
+
+                # 5 c
+                loss_summary = tf.Summary(value=[tf.Summary.Value(tag='loss', simple_value=loss_value)])
+                accuracy_summary = tf.Summary(value=[tf.Summary.Value(tag='accuracy', simple_value=acc_value)])
+                file_writer.add_summary(loss_summary, i)
+                file_writer.add_summary(accuracy_summary, i)
+
+            # 5 d
+            logits_test, accuracy_test = sess.run((logits, acc), feed_dict={inp: data_test, target_value: labels_test,
+                                                                            m: data_test.shape[0]})
+            conf_mat = confusion_matrix(labels_test, np.argmax(logits_test, axis=-1))
+            print("Test accuracy = %f" % accuracy_test)
+            print("Confusion matrix: ")
+            print(conf_mat)
+
+
+if __name__ == '__main__':
+    main()
