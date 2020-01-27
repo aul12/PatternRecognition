@@ -46,4 +46,19 @@
     \maketitle
     NOTE: All scripts are intended to be used with tf2. If run with tf1 please change the import of tensorflow.compat.v1 to just tensorflow
     and remove the line tf.disable\_v2\_behavior()
+    \section{Independent Component Analysis}
+
+    \section{Autoencoder}
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item The data points are not bound to $[-1, 1]$. As $\tanh(x) \in [-1, 1]$ it would thus not be possible
+            to reconstruct the data points with $\tanh$ as the transfer function in the output layer.
+
+        \item The distribution of the data points can not be described by a straight line. Thus a linear
+            model is insufficient to describe the data points. The non linear autoencoder is more expressive,
+            it is able to describe non linear distributions.
+            
+            Thus the model is able to achieve a better reconstruction of the data points. And thus a higher entropy
+            in the latent space, this results in a more balanced latent space.
+    \end{enumerate}
 \end{document}
