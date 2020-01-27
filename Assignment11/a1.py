@@ -11,6 +11,7 @@ def getentropy(values):
     hist, _ = np.histogram(values, bins=500)
     p = hist / np.sum(hist)
     log_val = np.log2(p)
+    # convergence for the win!
     log_val[np.isinf(log_val)] = 0
     return - np.sum(np.multiply(p, log_val))
 
@@ -25,6 +26,8 @@ def plot_scatter(data, title=None, save_as=None, legend=None):
     assert data.shape[-1] == 2 and len(data.shape) == 2
     plt.figure()
     plt.scatter(data[:, 0], data[:, 1])
+    plt.xlabel("Mic 1")
+    plt.ylabel("Mic 2")
 
     if title:
         plt.title(title)
@@ -39,6 +42,10 @@ def plot_scatter(data, title=None, save_as=None, legend=None):
 
 
 def main():
+    if len(sys.argv) != 3:
+        print("Please specify the .wav files as program arguments")
+        exit(1)
+
     # 1 load data
     sample_rate_A, signal_A = scipy.io.wavfile.read(sys.argv[1])
     sample_rate_B, signal_B = scipy.io.wavfile.read(sys.argv[2])
@@ -83,6 +90,7 @@ def main():
     # 5 b)
     data_reconstructed -= np.min(data_reconstructed, axis=0)
     data_reconstructed /= (np.max(data_reconstructed, axis=0) - np.min(data_reconstructed, axis=0))
+    plot_scatter(data_reconstructed, title="Reconstructed data X_r")
 
     time_axis = np.arange(0, data_reconstructed.shape[0])
     plt.figure()
