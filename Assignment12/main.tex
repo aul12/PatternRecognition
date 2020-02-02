@@ -1,0 +1,93 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tikz-timing}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{xstring}
+\usepackage{circuitikz}
+\usepackage{listings} % needed for the inclusion of source code
+\usepackage[final]{pdfpages}
+\usepackage{subcaption}
+\usepackage{import}
+\usepackage{cleveref}
+\usepackage{bm}
+
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+
+\newcommand{\Prb}[1]{P(\text{#1})}
+\newcommand{\CPr}[2]{P(\text{#1}|\text{#2})}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\rank}{rank}
+\newcommand{\R}[0]{\mathbb{R}}
+
+%Inkscape fuckery
+\newcommand{\incfig}[2][\columnwidth]{%
+    \def\svgwidth{#1}
+    \import{./}{#2.eps_tex}
+}
+
+\title{Pattern Recognition}
+\author{Tim Luchterhand, Paul Nykiel, Jonas Strauch (Group P)}
+
+\begin{document}
+    \maketitle
+    \section{1D CNN}
+    \begin{enumerate}
+        \item
+            \begin{enumerate}
+                \item $W \in \mathbb{R}^{(5, 2)}$
+                \item
+                    \begin{eqnarray*}
+                        y_{1;1} &=& 5 \\
+                            &\stackrel{!}{=}& \text{ReLU}\left( \sum_{i=1}^5 \sum_{c=1}^2 w_{i,c; 1} x_{i+1-1,c} + 0 \right) \\
+                            &\stackrel{w_{i,c;1} = c}{=}& \text{ReLU}\left( \sum_{i=1}^5 \sum_{c=1}^2 c x_{i,c} \right) \\
+                            &\stackrel{}{=}& \text{ReLU}\left( \sum_{c=1}^2 \sum_{i=1}^5 c x_{i,c} \right) \\
+                            &\stackrel{}{=}& \text{ReLU}\left( \sum_{c=1}^2 c \sum_{i=1}^5 x_{i,c} \right) \\
+                            &\stackrel{}{=}& \text{ReLU}\left( \sum_{c=1}^2 c \sum_{i=1}^5 x_{i,c} \right) \\
+                            &\stackrel{}{=}& \text{ReLU}\left(1 \cdot (x_{1,1} + 1 + 2 + 0 +1) + 2 \cdot (0 + (-1) + 0 +0 + 1) \right) \\
+                            &\stackrel{}{=}& \text{ReLU}\left(x_{1,1} + 4 \right) \\
+                            &\stackrel{x_{1,1} > -4, \text{else there is no solution}}{=}& x_{1,1} + 4 \\
+                            &\Rightarrow& x_{1,1} = 1
+                    \end{eqnarray*}
+            \end{enumerate}
+        \item When using a one dimensional convolution there is no assumption between the spatial relation of the
+            different channels. When using a two dimensional convolution the neighbourhood of the channels is taken
+            into account, but for many applications such a neighbourhood does not exist.
+
+            For the special case of a filter of size $5 \times 2$ (and an input with two channels) and the "valid" 
+            boundary condition the one dimensional and the two dimensional convolution are equivalent, 
+            as there the kernel is not "shifted" along the channel dimension due to the identical size. 
+        \item We assumed the fully connected output layer uses a bias as well. 
+            If there is no bias the number of biases in the last column would obviously be zero.
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{lcccc}
+                    \toprule
+                     & Input & CNN & Pool & Output \\
+                    \midrule
+                    Tensor dimensions & $10 \times 2$ & $ 6 \times 3 $ & $3 \times 3$ & 2\\
+                    Number of weights & 0 & $5 \cdot 2 \cdot 3 = 30$ & 0 & $(3 \cdot 3) \cdot 2 = 18$ \\
+                    Number of biases & 0 & 3 & 0 & 2 \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+        \item
+            The flattend input size is $20$. Thus the number of weights in the hidden layer would be $20 \cdot 10 = 200$,
+            the number of biases would be $10$. In the output layer the number of weights would be $10 \cdot 2 = 20$,
+            the number of biases $2$ (if there is a bias, see above).
+
+            In total there would be $232$ trainable weights in the MLP, the CNN consists of only $53$ trainable weights.
+    \end{enumerate} 
+\end{document}
