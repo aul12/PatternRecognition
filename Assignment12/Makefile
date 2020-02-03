@@ -11,7 +11,7 @@ show: main.pdf
 
 release: Sheet12GroupP.zip
 
-Sheet12GroupP.zip: main.pdf *.py *.ipynb
+Sheet12GroupP.zip: main.pdf *.ipynb
 	$(ZIP) $@  main.pdf *.py *.ipynb
 
 main.pdf: main.tex
