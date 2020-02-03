@@ -14,3 +14,9 @@ venv
 *.csv
 __pycache__/
 tf_logs/
+bin/
+etc/
+lib/
+lib64
+share/
+pyvenv.cfg
